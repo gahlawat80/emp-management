@@ -1,11 +1,14 @@
 package org.luv2code.empapp;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuOptions {
     private Scanner scan;
+    private EmployeeService employeeService;
 
     public MenuOptions(){
+        employeeService = new EmployeeService();
         this.scan = new Scanner(System.in);
     }
 
@@ -30,7 +33,8 @@ public class MenuOptions {
 
             switch (choice) {
                 case 1:
-                    System.out.println("View all employees");
+                    List<Employee> employees = employeeService.showAllEmployees();
+                    System.out.println(employees);
                     break;
                 case 2:
                     System.out.println("Add employees");
