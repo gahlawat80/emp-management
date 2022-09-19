@@ -37,11 +37,12 @@ public class MenuOptions {
                     System.out.println(employees);
                     break;
                 case 2:
-                    Employee e = employeeService.addEmployee(createEmployee());
+                    Employee e = employeeService.addEmployee(userEmployee());
                     System.out.println(e);
                     break;
                 case 3:
-                    System.out.println("Update employees");
+                    Employee updateEmp = employeeService.updateEmployee(userEmployee());
+                    System.out.println(updateEmp);
                     break;
                 case 4:
                     System.out.println("Delete employees");
@@ -63,7 +64,7 @@ public class MenuOptions {
         } while (!isExit);
     }
 
-    private static Employee createEmployee(){
+    private static Employee userEmployee(){
         Employee emp = new Employee();
         System.out.println("Please enter employee ID: ");
         emp.setEmpId(scan.nextInt());
