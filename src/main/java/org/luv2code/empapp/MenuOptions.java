@@ -49,10 +49,18 @@ public class MenuOptions {
                     employeeService.deleteEmployee(scan.nextInt());
                     break;
                 case 5:
-                    System.out.println("Show employees based on name");
+                    System.out.println("Enter the name of employee to search");
+                    List<Employee> employeeList = employeeService.fetchEmployeesByName(scan.next());
+                    System.out.println(employeeList);
                     break;
                 case 6:
-                    System.out.println("Show employee based on id");
+                    System.out.println("Enter the ID of employee you want to search...");
+                    Employee employee = employeeService.findEmployeeById(scan.nextInt());
+                    if(employee == null){
+                        System.out.println("No employee found in the list.");
+                    } else {
+                        System.out.println(employee);
+                    }
                     break;
                 case 7:
                     System.out.println("Exit");

@@ -19,7 +19,7 @@ public class EmployeeService {
     public Employee addEmployee(Employee emp){
         System.out.println("Adding employee to the list.");
         for(Employee e:employeeList){
-            if(emp.getEmpId() == emp.getEmpId()){
+            if(e.getEmpId() == emp.getEmpId()){
                 System.out.println("Employee already added to the list");
                 return null;
             }
@@ -90,5 +90,27 @@ public class EmployeeService {
         if(!isEmployeeFound){
             System.out.println("Employee with ID: "+empId+" NOT found in the list!");
         }
+    }
+
+    public List<Employee> fetchEmployeesByName(String name){
+        List<Employee> nameMatchingEmployees = new ArrayList<>();
+        for(int i=0;i<this.employeeList.size();i++){
+            Employee e = this.employeeList.get(i);
+            if(e.getEmpName().equalsIgnoreCase(name)){
+                nameMatchingEmployees.add(e);
+            }
+        }
+        return nameMatchingEmployees;
+    }
+
+    public Employee findEmployeeById(int empId){
+        System.out.println("Searching for employee with id: "+empId);
+
+        for(Employee e:this.employeeList){
+            if(e.getEmpId()==empId){
+                return e;
+            }
+        }
+        return null;
     }
 }
