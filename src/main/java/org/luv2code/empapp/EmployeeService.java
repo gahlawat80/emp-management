@@ -1,6 +1,7 @@
 package org.luv2code.empapp;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class EmployeeService {
@@ -69,5 +70,25 @@ public class EmployeeService {
             }
         }
         return null;
+    }
+
+    public void deleteEmployee(int empId){
+        boolean isEmployeeFound = false;
+        System.out.println("Trying to delete employee from the list");
+
+        Iterator itr = this.employeeList.iterator();
+
+        while(itr.hasNext()){
+            Employee emp = (Employee) itr.next();
+            if(emp.getEmpId() == empId){
+                isEmployeeFound=true;
+                itr.remove();
+                System.out.println(emp.getEmpName()+" is removed from the list!");
+            }
+        }
+
+        if(!isEmployeeFound){
+            System.out.println("Employee with ID: "+empId+" NOT found in the list!");
+        }
     }
 }

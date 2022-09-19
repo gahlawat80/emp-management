@@ -45,7 +45,8 @@ public class MenuOptions {
                     System.out.println(updateEmp);
                     break;
                 case 4:
-                    System.out.println("Delete employees");
+                    System.out.println("Please enter existing employee id for removal from the list");
+                    employeeService.deleteEmployee(scan.nextInt());
                     break;
                 case 5:
                     System.out.println("Show employees based on name");
