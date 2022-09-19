@@ -15,4 +15,16 @@ public class EmployeeService {
         return this.employeeList;
     }
 
+    public Employee addEmployee(Employee emp){
+        System.out.println("Adding employee to the list.");
+        try {
+            this.employeeList.add(emp);
+            return emp;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
 }

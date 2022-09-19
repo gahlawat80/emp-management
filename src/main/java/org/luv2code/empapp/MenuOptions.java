@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuOptions {
-    private Scanner scan;
-    private EmployeeService employeeService;
+    private static Scanner scan;
+    private static EmployeeService employeeService;
 
     public MenuOptions(){
         employeeService = new EmployeeService();
@@ -37,7 +37,8 @@ public class MenuOptions {
                     System.out.println(employees);
                     break;
                 case 2:
-                    System.out.println("Add employees");
+                    Employee e = employeeService.addEmployee(createEmployee());
+                    System.out.println(e);
                     break;
                 case 3:
                     System.out.println("Update employees");
@@ -60,5 +61,20 @@ public class MenuOptions {
                     break;
             }
         } while (!isExit);
+    }
+
+    private static Employee createEmployee(){
+        Employee emp = new Employee();
+        System.out.println("Please enter employee ID: ");
+        emp.setEmpId(scan.nextInt());
+        System.out.println("Please enter employee name: ");
+        emp.setEmpName(scan.next());
+        System.out.println("Please enter department: ");
+        emp.setDept(scan.next());
+        System.out.println("Please enter salary: ");
+        emp.setSalary(scan.nextDouble());
+        System.out.println("Please enter manager name: ");
+        emp.setManager(scan.next());
+        return emp;
     }
 }
